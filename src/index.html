@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bin2Dec</title>
+</head>
+<body onload="document.getElementById('converted').textContent = Convert()">
+    
+    <h1>Convert to decimal</h1>
+    
+    <span id="converted"></span>
+    <br>
+    <br>
+    
+    
+    <input type='text'
+            placeholder="insert a binary"
+            minlength="1"
+            maxlength="8"    
+            onkeypress="if (!isNaN(event.key) && event.key <= 1) return true; //verifica se oq foi digitado no input é um número e se o numero digitado é 0 ou 1, se der falso impede a digitação
+            else{
+                document.getElementById('message').textContent = 'type a binary digit' //se não for 0 ou 1 exibe a mensagem pra digitar um binário
+                setTimeout(function(){           
+                    document.getElementById('message').classList.add('hide')
+                    document.getElementById('message').textContent =''
+                    document.getElementById('message').classList.remove('hide')    
+                },800); 
+                 
+                return false
+            }  
+            ">
+
+    <button type="submit">convert</button>
+    
+    <style>
+         .hide{
+             opacity: 0;
+         }
+         div{
+            color:red;
+            opacity: 1;
+            transition:0.2s;
+        }
+    </style>
+
+    <div  id="message"></div> <!-- aqui aparecerá a mensagem 'type a binary digit' caso oq for digitado não seja 0 ou 1-->
+
+    </input>
+
+    <script src="index.js"></script>
+</body>
+</html>
